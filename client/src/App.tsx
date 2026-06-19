@@ -175,18 +175,23 @@ export function App() {
   const alerts = useQuery({ queryKey: ["alerts"], queryFn: () => apiGet<EmergencyAlertRecord[]>("/api/alerts") });
 
   const ready = mode.data && dashboard.data;
+  const isCursorCliPage = location === "/cursor-cli";
 
   return (
     <div className="shell">
       <Sidebar currentPath={location} />
       <main className="main-panel">
         <div className="grid-drift" />
-        <Header mode={mode.data} pulse={pulse} />
-        {mode.data && !mode.data.isLive ? (
-          <ForecastBanner target={mode.data.deploymentTarget} />
-        ) : (
-          <div className="live-banner">Live Production mode is active for {mode.data?.deploymentTarget}.</div>
-        )}
+        {!isCursorCliPage ? (
+          <>
+            <Header mode={mode.data} pulse={pulse} />
+            {mode.data && !mode.data.isLive ? (
+              <ForecastBanner target={mode.data.deploymentTarget} />
+            ) : (
+              <div className="live-banner">Live Production mode is active for {mode.data?.deploymentTarget}.</div>
+            )}
+          </>
+        ) : null}
 
         {!ready ? (
           <LoadingState />
