@@ -53,7 +53,7 @@ setInterval(async () => {
 if (config.nodeEnv === "production") {
   const publicDir = path.resolve(__dirname, "../public");
   app.use(express.static(publicDir));
-  app.get("*", (_request, response) => {
+  app.use((_request, response) => {
     response.sendFile(path.join(publicDir, "index.html"));
   });
 }
