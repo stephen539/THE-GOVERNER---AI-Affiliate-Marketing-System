@@ -618,6 +618,110 @@ td {
   color: #dbeafe;
 }
 
+.cli-guide {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.cli-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  border-radius: 1.2rem;
+  background:
+    radial-gradient(circle at top right, rgba(0, 240, 255, 0.14), transparent 20rem),
+    rgba(15, 23, 42, 0.42);
+}
+
+.cli-hero h2 {
+  max-width: 48rem;
+  margin: 0.7rem 0;
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+.cli-hero p,
+.cli-reference-card p,
+.mode-card p,
+.cli-feature-grid p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.cli-reference-grid,
+.mode-grid,
+.cli-feature-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.cli-reference-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cli-reference-card,
+.mode-card,
+.cli-feature-grid article {
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.cli-reference-card {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+}
+
+.cli-reference-card h3,
+.mode-card h3,
+.cli-feature-grid h3 {
+  margin: 0;
+}
+
+.code-block {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  color: #d9f99d;
+  border: 1px solid rgba(35, 255, 177, 0.18);
+  border-radius: 0.9rem;
+  background: rgba(2, 6, 23, 0.86);
+}
+
+.code-block code,
+.mode-card code,
+.cli-feature-grid code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.mode-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mode-card,
+.cli-feature-grid article {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.mode-card code {
+  color: #bae6fd;
+}
+
+.cli-feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cli-feature-grid code {
+  color: #f8fafc;
+}
+
 .admin-console {
   max-width: 64rem;
 }
@@ -725,7 +829,10 @@ td {
   .metric-grid,
   .two-column,
   .agent-grid,
-  .pipeline {
+  .pipeline,
+  .cli-reference-grid,
+  .mode-grid,
+  .cli-feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -742,8 +849,13 @@ td {
   }
 
   .hero,
+  .cli-hero,
   .admin-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cli-hero {
+    display: grid;
   }
 
   .hero-status,
@@ -760,7 +872,10 @@ td {
   .metric-grid,
   .two-column,
   .agent-grid,
-  .pipeline {
+  .pipeline,
+  .cli-reference-grid,
+  .mode-grid,
+  .cli-feature-grid {
     grid-template-columns: 1fr;
   }
 }
