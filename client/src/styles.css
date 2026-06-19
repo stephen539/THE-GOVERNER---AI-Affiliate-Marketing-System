@@ -79,7 +79,7 @@ td {
 
 .shell {
   display: grid;
-  grid-template-columns: 18rem minmax(0, 1fr);
+  grid-template-columns: 20rem minmax(0, 1fr);
   min-height: 100vh;
 }
 
@@ -99,7 +99,7 @@ td {
   display: flex;
   align-items: center;
   gap: 0.9rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.35rem;
 }
 
 .brand-mark {
@@ -115,7 +115,8 @@ td {
 }
 
 .brand-lockup p,
-.brand-lockup h1 {
+.brand-lockup h1,
+.brand-subtitle {
   margin: 0;
 }
 
@@ -130,10 +131,18 @@ td {
   letter-spacing: 0.12em;
 }
 
+.brand-subtitle {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--cyan);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
 .nav-section {
   display: grid;
-  gap: 0.4rem;
-  margin-bottom: 1.35rem;
+  gap: 0.28rem;
+  margin-bottom: 1rem;
 }
 
 .nav-section > span {
@@ -149,10 +158,11 @@ td {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0.78rem 0.85rem;
+  padding: 0.62rem 0.75rem;
   color: #cbd5e1;
   border: 1px solid transparent;
   border-radius: 0.95rem;
+  font-size: 0.94rem;
   text-decoration: none;
   transition: 160ms ease;
 }
@@ -168,7 +178,7 @@ td {
 .sidebar-card {
   display: grid;
   gap: 0.55rem;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
   padding: 1rem;
   color: #cbd5e1;
   border: 1px solid rgba(245, 158, 11, 0.26);
@@ -447,6 +457,51 @@ td {
 .readiness-list {
   display: grid;
   gap: 0.75rem;
+}
+
+.module-page {
+  max-width: 70rem;
+}
+
+.module-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.module-hero > div,
+.module-metrics span {
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.46);
+}
+
+.module-hero > div {
+  padding: 1rem;
+  border-radius: 1.1rem;
+}
+
+.module-hero h3,
+.module-hero p {
+  margin: 0.65rem 0 0;
+}
+
+.module-hero p {
+  color: var(--muted);
+}
+
+.module-metrics {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.module-metrics span {
+  display: flex;
+  align-items: center;
+  border-radius: 0.9rem;
+  padding: 0.75rem;
+  color: #dbeafe;
+  font-weight: 700;
 }
 
 .briefing-list article {
@@ -742,7 +797,8 @@ td {
   }
 
   .hero,
-  .admin-grid {
+  .admin-grid,
+  .module-hero {
     grid-template-columns: 1fr;
   }
 
