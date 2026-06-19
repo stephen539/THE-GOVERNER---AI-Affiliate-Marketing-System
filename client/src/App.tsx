@@ -260,90 +260,90 @@ export function App() {
                 alerts={alerts.data ?? []}
               />
             </Route>
-          <Route path="/governor-chat">
-            <ModulePage details={moduleDetails["/governor-chat"]} />
-          </Route>
-          <Route path="/morning-briefing">
-            <MorningBriefing campaigns={campaigns.data ?? []} alerts={alerts.data ?? []} />
-          </Route>
+            <Route path="/governor-chat">
+              <ModulePage details={moduleDetails["/governor-chat"]} />
+            </Route>
+            <Route path="/morning-briefing">
+              <MorningBriefing campaigns={campaigns.data ?? []} alerts={alerts.data ?? []} />
+            </Route>
             <Route path="/agents">
               <AgentSwarm agents={agents.data ?? []} />
             </Route>
             <Route path="/content">
-            <ContentPipeline content={content.data ?? []} />
-          </Route>
-          <Route path="/video-production">
-            <VideoProduction videos={videos.data ?? []} />
-          </Route>
-          <Route path="/marketing-studio">
-            <MarketingStudio campaigns={campaigns.data ?? []} email={email.data ?? []} isLive={mode.data.isLive} />
-          </Route>
-          <Route path="/campaigns">
-            <CampaignsPage campaigns={campaigns.data ?? []} isLive={mode.data.isLive} />
-          </Route>
-          <Route path="/skill-creator">
-            <ModulePage details={moduleDetails["/skill-creator"]} />
-          </Route>
-          <Route path="/guvnor-relay">
-            <ModulePage details={moduleDetails["/guvnor-relay"]} />
-          </Route>
-          <Route path="/client-oversight">
-            <ClientOversight campaigns={campaigns.data ?? []} contacts={crm.data ?? []} />
-          </Route>
-          <Route path="/clients">
-            <ClientsPage contacts={crm.data ?? []} />
-          </Route>
-          <Route path="/symphony-launcher">
-            <ModulePage details={moduleDetails["/symphony-launcher"]} />
-          </Route>
-          <Route path="/live-research">
-            <ModulePage details={moduleDetails["/live-research"]} />
-          </Route>
-          <Route path="/operations-guide">
-            <ModulePage details={moduleDetails["/operations-guide"]} />
-          </Route>
-          <Route path="/ghoststream">
-            <ModulePage details={moduleDetails["/ghoststream"]} />
-          </Route>
-          <Route path="/gs-factory">
-            <ModulePage details={moduleDetails["/gs-factory"]} />
+              <ContentPipeline content={content.data ?? []} />
+            </Route>
+            <Route path="/video-production">
+              <VideoProduction videos={videos.data ?? []} />
+            </Route>
+            <Route path="/marketing-studio">
+              <MarketingStudio campaigns={campaigns.data ?? []} email={email.data ?? []} isLive={mode.data.isLive} />
+            </Route>
+            <Route path="/campaigns">
+              <CampaignsPage campaigns={campaigns.data ?? []} isLive={mode.data.isLive} />
+            </Route>
+            <Route path="/skill-creator">
+              <ModulePage details={moduleDetails["/skill-creator"]} />
+            </Route>
+            <Route path="/guvnor-relay">
+              <ModulePage details={moduleDetails["/guvnor-relay"]} />
+            </Route>
+            <Route path="/client-oversight">
+              <ClientOversight campaigns={campaigns.data ?? []} contacts={crm.data ?? []} />
+            </Route>
+            <Route path="/clients">
+              <ClientsPage contacts={crm.data ?? []} />
+            </Route>
+            <Route path="/symphony-launcher">
+              <ModulePage details={moduleDetails["/symphony-launcher"]} />
+            </Route>
+            <Route path="/live-research">
+              <ModulePage details={moduleDetails["/live-research"]} />
+            </Route>
+            <Route path="/operations-guide">
+              <ModulePage details={moduleDetails["/operations-guide"]} />
+            </Route>
+            <Route path="/ghoststream">
+              <ModulePage details={moduleDetails["/ghoststream"]} />
+            </Route>
+            <Route path="/gs-factory">
+              <ModulePage details={moduleDetails["/gs-factory"]} />
             </Route>
             <Route path="/marketing">
               <MarketingHub campaigns={campaigns.data ?? []} email={email.data ?? []} isLive={mode.data.isLive} />
             </Route>
-          <Route path="/email-marketing">
-            <EmailMarketingPage email={email.data ?? []} />
-          </Route>
+            <Route path="/email-marketing">
+              <EmailMarketingPage email={email.data ?? []} />
+            </Route>
             <Route path="/crm">
               <CrmHub contacts={crm.data ?? []} />
             </Route>
             <Route path="/journeys">
-            <JourneysPage journeys={journeys.data ?? []} />
-          </Route>
-          <Route path="/ab-testing">
-            <AbTestingPage abTests={abTests.data ?? []} />
-          </Route>
-          <Route path="/agent-engine">
-            <ModulePage details={moduleDetails["/agent-engine"]} metrics={[`${agents.data?.length ?? 0} agents registered`, `${dashboard.data.activeAgents} active agents`]} />
+              <JourneysPage journeys={journeys.data ?? []} />
+            </Route>
+            <Route path="/ab-testing">
+              <AbTestingPage abTests={abTests.data ?? []} />
+            </Route>
+            <Route path="/agent-engine">
+              <ModulePage details={moduleDetails["/agent-engine"]} metrics={[`${agents.data?.length ?? 0} agents registered`, `${dashboard.data.activeAgents} active agents`]} />
             </Route>
             <Route path="/security">
               <SecurityVault mode={mode.data} />
             </Route>
-          <Route path="/tools-services">
-            <ModulePage details={moduleDetails["/tools-services"]} />
-          </Route>
-          <Route path="/budget-tracker">
-            <ModulePage details={moduleDetails["/budget-tracker"]} metrics={[`${currency(dashboard.data.aiSpendTodayCents)} planned AI budget`, `${currency(dashboard.data.targetRevenueCents)} 90-day target`]} />
-          </Route>
-          <Route path="/compliance">
-            <ModulePage details={moduleDetails["/compliance"]} metrics={[`${content.data?.length ?? 0} assets tracked`, `${alerts.data?.length ?? 0} alerts visible`]} />
-          </Route>
+            <Route path="/tools-services">
+              <ModulePage details={moduleDetails["/tools-services"]} />
+            </Route>
+            <Route path="/budget-tracker">
+              <ModulePage details={moduleDetails["/budget-tracker"]} metrics={[`${currency(dashboard.data.aiSpendTodayCents)} planned AI budget`, `${currency(dashboard.data.targetRevenueCents)} 90-day target`]} />
+            </Route>
+            <Route path="/compliance">
+              <ModulePage details={moduleDetails["/compliance"]} metrics={[`${content.data?.length ?? 0} assets tracked`, `${alerts.data?.length ?? 0} alerts visible`]} />
+            </Route>
             <Route path="/activity">
               <ActivityLogs logs={logs.data ?? []} alerts={alerts.data ?? []} />
             </Route>
-          <Route path="/system-online">
-            <SystemOnline mode={mode.data} pulse={pulse} />
-          </Route>
+            <Route path="/system-online">
+              <SystemOnline mode={mode.data} pulse={pulse} />
+            </Route>
             <Route path="/admin">
               <AdminConsole mode={mode.data} />
             </Route>
@@ -755,15 +755,6 @@ function ClientsPage({ contacts }: { contacts: CrmContactRecord[] }) {
         ))}
       </div>
     </section>
-  );
-}
-
-function JourneyLab({ journeys, abTests }: { journeys: CustomerJourneyRecord[]; abTests: AbTestRecord[] }) {
-  return (
-    <div className="two-column">
-      <JourneysPage journeys={journeys} contained />
-      <AbTestingPage abTests={abTests} contained />
-    </div>
   );
 }
 
