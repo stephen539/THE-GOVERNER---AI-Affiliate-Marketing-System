@@ -3,22 +3,36 @@ import {
   Activity,
   BarChart3,
   Bot,
+  BookOpen,
   BrainCircuit,
   BriefcaseBusiness,
   Clapperboard,
+  ClipboardCheck,
   DatabaseZap,
+  Factory,
   FlaskConical,
+  Handshake,
   KeyRound,
   Mail,
   Megaphone,
+  MessageSquare,
+  Music,
+  Newspaper,
   Orbit,
+  PlugZap,
+  Power,
   Radar,
   Rocket,
   Route as RouteIcon,
+  Search,
   ShieldCheck,
   Siren,
   Sparkles,
   ToggleRight,
+  UserCheck,
+  WalletCards,
+  WandSparkles,
+  Wrench,
   Users
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -60,27 +74,146 @@ const navSections = [
     label: "Operations",
     items: [
       { href: "/", label: "Command Center", icon: Radar },
+      { href: "/governor-chat", label: "Governor Chat", icon: MessageSquare },
+      { href: "/morning-briefing", label: "Morning Briefing", icon: Newspaper },
       { href: "/agents", label: "Agent Swarm", icon: Bot },
-      { href: "/content", label: "Content + Video", icon: Clapperboard }
+      { href: "/content", label: "Content Pipeline", icon: Clapperboard },
+      { href: "/video-production", label: "Video Production", icon: Clapperboard },
+      { href: "/marketing-studio", label: "Marketing Studio", icon: Megaphone },
+      { href: "/campaigns", label: "Campaigns", icon: BarChart3 },
+      { href: "/skill-creator", label: "Skill Creator", icon: WandSparkles },
+      { href: "/guvnor-relay", label: "Guvnor Relay", icon: PlugZap },
+      { href: "/client-oversight", label: "Client Oversight", icon: UserCheck },
+      { href: "/clients", label: "Clients", icon: BriefcaseBusiness },
+      { href: "/symphony-launcher", label: "Symphony Launcher", icon: Music },
+      { href: "/live-research", label: "Live Research", icon: Search },
+      { href: "/operations-guide", label: "Operations Guide", icon: BookOpen }
+    ]
+  },
+  {
+    label: "GhostStream",
+    items: [
+      { href: "/ghoststream", label: "GhostStream", icon: Orbit },
+      { href: "/gs-factory", label: "GS Factory", icon: Factory }
     ]
   },
   {
     label: "Marketing",
     items: [
-      { href: "/marketing", label: "Campaigns + Email", icon: Megaphone },
+      { href: "/email-marketing", label: "Email Marketing", icon: Mail },
       { href: "/crm", label: "CRM + Leads", icon: Users },
-      { href: "/journeys", label: "Journeys + A/B", icon: RouteIcon }
+      { href: "/journeys", label: "Journeys", icon: RouteIcon },
+      { href: "/ab-testing", label: "A/B Testing", icon: FlaskConical }
     ]
   },
   {
     label: "System",
     items: [
-      { href: "/security", label: "Security Vault", icon: KeyRound },
-      { href: "/activity", label: "Activity Logs", icon: Activity },
+      { href: "/agent-engine", label: "Agent Engine", icon: Bot },
+      { href: "/security", label: "Security", icon: KeyRound },
+      { href: "/tools-services", label: "Tools & Services", icon: Wrench },
+      { href: "/budget-tracker", label: "Budget Tracker", icon: WalletCards },
+      { href: "/compliance", label: "Compliance", icon: ClipboardCheck },
+      { href: "/activity", label: "Activity Log", icon: Activity },
+      { href: "/system-online", label: "System Online", icon: Power },
       { href: "/admin", label: "Deployment Console", icon: ToggleRight, hidden: true }
     ]
   }
 ];
+
+const moduleDetails = {
+  "/governor-chat": {
+    icon: MessageSquare,
+    title: "Governor Chat",
+    caption: "Operator chat lane for campaign commands, approvals, and swarm prompts.",
+    status: "ready",
+    bullets: ["Command intake", "Approval handoff", "Swarm prompt routing"]
+  },
+  "/skill-creator": {
+    icon: WandSparkles,
+    title: "Skill Creator",
+    caption: "Create reusable playbooks for content, research, compliance, and client workflows.",
+    status: "draft",
+    bullets: ["Skill templates", "Runbook versioning", "Agent assignment"]
+  },
+  "/guvnor-relay": {
+    icon: PlugZap,
+    title: "Guvnor Relay",
+    caption: "Relay operational updates between the command layer and external services.",
+    status: "standby",
+    bullets: ["Webhook dispatch", "Signal fanout", "Escalation routing"]
+  },
+  "/symphony-launcher": {
+    icon: Music,
+    title: "Symphony Launcher",
+    caption: "Coordinate multi-agent launches across campaigns, content, and research.",
+    status: "ready",
+    bullets: ["Launch sequencing", "Crew coordination", "Output checkpoints"]
+  },
+  "/live-research": {
+    icon: Search,
+    title: "Live Research",
+    caption: "Track market signals, offer angles, and competitor intelligence.",
+    status: "watching",
+    bullets: ["Trend discovery", "Competitor watch", "Offer validation"]
+  },
+  "/operations-guide": {
+    icon: BookOpen,
+    title: "Operations Guide",
+    caption: "Canonical guide for command center procedures and production readiness.",
+    status: "published",
+    bullets: ["Launch checklist", "Incident steps", "Publishing rules"]
+  },
+  "/ghoststream": {
+    icon: Orbit,
+    title: "GhostStream",
+    caption: "Anonymous content signal layer for always-on distribution monitoring.",
+    status: "watching",
+    bullets: ["Stream health", "Channel routing", "Asset observability"]
+  },
+  "/gs-factory": {
+    icon: Factory,
+    title: "GS Factory",
+    caption: "Factory floor for GhostStream batch production and queue control.",
+    status: "queued",
+    bullets: ["Batch assembly", "Queue readiness", "Output storage"]
+  },
+  "/agent-engine": {
+    icon: Bot,
+    title: "Agent Engine",
+    caption: "Model assignment, tool controls, and runtime status for autonomous crews.",
+    status: "online",
+    bullets: ["Model routing", "Tool permissions", "Runtime controls"]
+  },
+  "/tools-services": {
+    icon: Wrench,
+    title: "Tools & Services",
+    caption: "Integration map for AI gateways, email, analytics, storage, and CRM services.",
+    status: "mapped",
+    bullets: ["Service registry", "Credential readiness", "Health checks"]
+  },
+  "/budget-tracker": {
+    icon: WalletCards,
+    title: "Budget Tracker",
+    caption: "TokenGuard budget oversight for AI spend, campaign spend, and daily limits.",
+    status: "guarded",
+    bullets: ["Daily AI budget", "Spend alerts", "Campaign controls"]
+  },
+  "/compliance": {
+    icon: ClipboardCheck,
+    title: "Compliance",
+    caption: "Review claims, content readiness, and publishing policy requirements.",
+    status: "active",
+    bullets: ["Claim review", "Policy checks", "Approval history"]
+  },
+  "/system-online": {
+    icon: Power,
+    title: "System Online",
+    caption: "Live heartbeat, deployment mode, and command layer availability.",
+    status: "online",
+    bullets: ["Telemetry stream", "API heartbeat", "Mode status"]
+  }
+} satisfies Record<string, { icon: LucideIcon; title: string; caption: string; status: string; bullets: string[] }>;
 
 const crewColors = ["#00f0ff", "#7c3cff", "#23ffb1", "#ff3df2", "#ffd166"];
 
@@ -127,26 +260,89 @@ export function App() {
                 alerts={alerts.data ?? []}
               />
             </Route>
+            <Route path="/governor-chat">
+              <ModulePage details={moduleDetails["/governor-chat"]} />
+            </Route>
+            <Route path="/morning-briefing">
+              <MorningBriefing campaigns={campaigns.data ?? []} alerts={alerts.data ?? []} />
+            </Route>
             <Route path="/agents">
               <AgentSwarm agents={agents.data ?? []} />
             </Route>
             <Route path="/content">
-              <ContentStudio content={content.data ?? []} videos={videos.data ?? []} />
+              <ContentPipeline content={content.data ?? []} />
+            </Route>
+            <Route path="/video-production">
+              <VideoProduction videos={videos.data ?? []} />
+            </Route>
+            <Route path="/marketing-studio">
+              <MarketingStudio campaigns={campaigns.data ?? []} email={email.data ?? []} isLive={mode.data.isLive} />
+            </Route>
+            <Route path="/campaigns">
+              <CampaignsPage campaigns={campaigns.data ?? []} isLive={mode.data.isLive} />
+            </Route>
+            <Route path="/skill-creator">
+              <ModulePage details={moduleDetails["/skill-creator"]} />
+            </Route>
+            <Route path="/guvnor-relay">
+              <ModulePage details={moduleDetails["/guvnor-relay"]} />
+            </Route>
+            <Route path="/client-oversight">
+              <ClientOversight campaigns={campaigns.data ?? []} contacts={crm.data ?? []} />
+            </Route>
+            <Route path="/clients">
+              <ClientsPage contacts={crm.data ?? []} />
+            </Route>
+            <Route path="/symphony-launcher">
+              <ModulePage details={moduleDetails["/symphony-launcher"]} />
+            </Route>
+            <Route path="/live-research">
+              <ModulePage details={moduleDetails["/live-research"]} />
+            </Route>
+            <Route path="/operations-guide">
+              <ModulePage details={moduleDetails["/operations-guide"]} />
+            </Route>
+            <Route path="/ghoststream">
+              <ModulePage details={moduleDetails["/ghoststream"]} />
+            </Route>
+            <Route path="/gs-factory">
+              <ModulePage details={moduleDetails["/gs-factory"]} />
             </Route>
             <Route path="/marketing">
               <MarketingHub campaigns={campaigns.data ?? []} email={email.data ?? []} isLive={mode.data.isLive} />
+            </Route>
+            <Route path="/email-marketing">
+              <EmailMarketingPage email={email.data ?? []} />
             </Route>
             <Route path="/crm">
               <CrmHub contacts={crm.data ?? []} />
             </Route>
             <Route path="/journeys">
-              <JourneyLab journeys={journeys.data ?? []} abTests={abTests.data ?? []} />
+              <JourneysPage journeys={journeys.data ?? []} />
+            </Route>
+            <Route path="/ab-testing">
+              <AbTestingPage abTests={abTests.data ?? []} />
+            </Route>
+            <Route path="/agent-engine">
+              <ModulePage details={moduleDetails["/agent-engine"]} metrics={[`${agents.data?.length ?? 0} agents registered`, `${dashboard.data.activeAgents} active agents`]} />
             </Route>
             <Route path="/security">
               <SecurityVault mode={mode.data} />
             </Route>
+            <Route path="/tools-services">
+              <ModulePage details={moduleDetails["/tools-services"]} />
+            </Route>
+            <Route path="/budget-tracker">
+              <ModulePage details={moduleDetails["/budget-tracker"]} metrics={[`${currency(dashboard.data.aiSpendTodayCents)} planned AI budget`, `${currency(dashboard.data.targetRevenueCents)} 90-day target`]} />
+            </Route>
+            <Route path="/compliance">
+              <ModulePage details={moduleDetails["/compliance"]} metrics={[`${content.data?.length ?? 0} assets tracked`, `${alerts.data?.length ?? 0} alerts visible`]} />
+            </Route>
             <Route path="/activity">
               <ActivityLogs logs={logs.data ?? []} alerts={alerts.data ?? []} />
+            </Route>
+            <Route path="/system-online">
+              <SystemOnline mode={mode.data} pulse={pulse} />
             </Route>
             <Route path="/admin">
               <AdminConsole mode={mode.data} />
@@ -191,6 +387,7 @@ function Sidebar({ currentPath }: { currentPath: string }) {
         <div>
           <p>THE</p>
           <h1>GOVERNER</h1>
+          <span className="brand-subtitle">AI Marketing Engine</span>
         </div>
       </div>
 
@@ -379,37 +576,70 @@ function AgentSwarm({ agents }: { agents: AgentRecord[] }) {
   );
 }
 
-function ContentStudio({ content, videos }: { content: ContentRecord[]; videos: VideoShortRecord[] }) {
+function MorningBriefing({ campaigns, alerts }: { campaigns: CampaignRecord[]; alerts: EmergencyAlertRecord[] }) {
+  return (
+    <section className="panel page-panel">
+      <PanelHeader icon={Newspaper} title="Morning Briefing" caption="Executive snapshot, active risks, and campaign economics." />
+      <div className="briefing-list">
+        {alerts.map((alert) => (
+          <article key={alert.id}>
+            <StatusPill tone={alert.isResolved ? "success" : "warning"}>{alert.severity}</StatusPill>
+            <h3>{alert.title}</h3>
+            <p>{alert.description}</p>
+          </article>
+        ))}
+        <article>
+          <StatusPill tone="success">nominal</StatusPill>
+          <h3>{campaigns.length} campaign workstreams guarded</h3>
+          <p>ROAS, spend visibility, and revenue attribution are staged for production review.</p>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function ContentPipeline({ content }: { content: ContentRecord[] }) {
+  return (
+    <section className="panel page-panel">
+      <PanelHeader icon={Clapperboard} title="Content Pipeline" caption="Generation, compliance, and publish readiness." />
+      <DataTable
+        columns={["Asset", "Channel", "Status", "Compliance", "Reach"]}
+        rows={content.map((item) => [
+          item.title,
+          item.channel,
+          <StatusPill key="status" tone="forecast">{item.status}</StatusPill>,
+          percent(item.complianceScore),
+          <span key="reach">{compact(item.estimatedReach)} {item.isEstimatedReachSample ? <SampleTag /> : null}</span>
+        ])}
+      />
+    </section>
+  );
+}
+
+function VideoProduction({ videos }: { videos: VideoShortRecord[] }) {
+  return (
+    <section className="panel page-panel">
+      <PanelHeader icon={Clapperboard} title="Video Production" caption="Neon 9:16 rendering queue and storage status." />
+      <div className="video-list">
+        {videos.map((video) => (
+          <article key={video.id}>
+            <div>
+              <h3>{video.title}</h3>
+              <p>{video.platform} / {video.durationSeconds}s / style: {video.style}</p>
+            </div>
+            <StatusPill tone={video.status === "rendered" ? "success" : "forecast"}>{video.status}</StatusPill>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MarketingStudio({ campaigns, email, isLive }: { campaigns: CampaignRecord[]; email: EmailCampaignRecord[]; isLive: boolean }) {
   return (
     <div className="two-column">
-      <section className="panel">
-        <PanelHeader icon={Clapperboard} title="Content Pipeline" caption="Generation, compliance, and publish readiness." />
-        <DataTable
-          columns={["Asset", "Channel", "Status", "Compliance", "Reach"]}
-          rows={content.map((item) => [
-            item.title,
-            item.channel,
-            <StatusPill key="status" tone="forecast">{item.status}</StatusPill>,
-            percent(item.complianceScore),
-            <span key="reach">{compact(item.estimatedReach)} {item.isEstimatedReachSample ? <SampleTag /> : null}</span>
-          ])}
-        />
-      </section>
-
-      <section className="panel">
-        <PanelHeader icon={Clapperboard} title="Autonomous Video Factory" caption="Neon 9:16 rendering queue and storage status." />
-        <div className="video-list">
-          {videos.map((video) => (
-            <article key={video.id}>
-              <div>
-                <h3>{video.title}</h3>
-                <p>{video.platform} / {video.durationSeconds}s / style: {video.style}</p>
-              </div>
-              <StatusPill tone={video.status === "rendered" ? "success" : "forecast"}>{video.status}</StatusPill>
-            </article>
-          ))}
-        </div>
-      </section>
+      <CampaignsPage campaigns={campaigns} isLive={isLive} contained />
+      <EmailMarketingPage email={email} contained />
     </div>
   );
 }
@@ -417,36 +647,51 @@ function ContentStudio({ content, videos }: { content: ContentRecord[]; videos: 
 function MarketingHub({ campaigns, email, isLive }: { campaigns: CampaignRecord[]; email: EmailCampaignRecord[]; isLive: boolean }) {
   return (
     <div className="two-column">
-      <section className="panel">
-        <PanelHeader icon={Megaphone} title="Campaign Manager" caption="Client-linked attribution and platform economics." />
-        <DataTable
-          columns={["Campaign", "Platform", "Status", isLive ? "Spend" : "Spend", "Revenue", "ROAS"]}
-          rows={campaigns.map((campaign) => [
-            campaign.name,
-            campaign.platform,
-            <StatusPill key="status" tone={campaign.status === "live" ? "success" : "forecast"}>{campaign.status}</StatusPill>,
-            isLive ? currency(campaign.spendCents) : <span className="forecast-value" key="spend">hidden until live</span>,
-            currency(campaign.revenueCents),
-            Number(campaign.roas) > 0 ? `${campaign.roas}x` : "pending"
-          ])}
-        />
-      </section>
-
-      <section className="panel">
-        <PanelHeader icon={Mail} title="Email Marketing" caption="Resend-ready sends, opens, clicks, and revenue." />
-        <DataTable
-          columns={["Campaign", "Status", "Sent", "Open Rate", "Click Rate", "Revenue"]}
-          rows={email.map((campaign) => [
-            campaign.name,
-            <StatusPill key="status" tone={campaign.status === "sent" ? "success" : "forecast"}>{campaign.status}</StatusPill>,
-            compact(campaign.sent),
-            percent((campaign.opens / Math.max(campaign.sent, 1)) * 100),
-            percent((campaign.clicks / Math.max(campaign.sent, 1)) * 100),
-            currency(campaign.revenueCents)
-          ])}
-        />
-      </section>
+      <CampaignsPage campaigns={campaigns} isLive={isLive} contained />
+      <EmailMarketingPage email={email} contained />
     </div>
+  );
+}
+
+function CampaignsPage({ campaigns, isLive, contained = false }: { campaigns: CampaignRecord[]; isLive: boolean; contained?: boolean }) {
+  const className = contained ? "panel" : "panel page-panel";
+
+  return (
+    <section className={className}>
+      <PanelHeader icon={Megaphone} title="Campaigns" caption="Client-linked attribution and platform economics." />
+      <DataTable
+        columns={["Campaign", "Platform", "Status", "Spend", "Revenue", "ROAS"]}
+        rows={campaigns.map((campaign) => [
+          campaign.name,
+          campaign.platform,
+          <StatusPill key="status" tone={campaign.status === "live" ? "success" : "forecast"}>{campaign.status}</StatusPill>,
+          isLive ? currency(campaign.spendCents) : <span className="forecast-value" key="spend">hidden until live</span>,
+          currency(campaign.revenueCents),
+          Number(campaign.roas) > 0 ? `${campaign.roas}x` : "pending"
+        ])}
+      />
+    </section>
+  );
+}
+
+function EmailMarketingPage({ email, contained = false }: { email: EmailCampaignRecord[]; contained?: boolean }) {
+  const className = contained ? "panel" : "panel page-panel";
+
+  return (
+    <section className={className}>
+      <PanelHeader icon={Mail} title="Email Marketing" caption="Resend-ready sends, opens, clicks, and revenue." />
+      <DataTable
+        columns={["Campaign", "Status", "Sent", "Open Rate", "Click Rate", "Revenue"]}
+        rows={email.map((campaign) => [
+          campaign.name,
+          <StatusPill key="status" tone={campaign.status === "sent" ? "success" : "forecast"}>{campaign.status}</StatusPill>,
+          compact(campaign.sent),
+          percent((campaign.opens / Math.max(campaign.sent, 1)) * 100),
+          percent((campaign.clicks / Math.max(campaign.sent, 1)) * 100),
+          currency(campaign.revenueCents)
+        ])}
+      />
+    </section>
   );
 }
 
@@ -468,37 +713,88 @@ function CrmHub({ contacts }: { contacts: CrmContactRecord[] }) {
   );
 }
 
-function JourneyLab({ journeys, abTests }: { journeys: CustomerJourneyRecord[]; abTests: AbTestRecord[] }) {
+function ClientOversight({ campaigns, contacts }: { campaigns: CampaignRecord[]; contacts: CrmContactRecord[] }) {
   return (
     <div className="two-column">
       <section className="panel">
-        <PanelHeader icon={RouteIcon} title="Customer Journeys" caption="Enroll, advance, and complete real CRM contacts." />
-        <DataTable
-          columns={["Journey", "Status", "Enrollments", "Completions"]}
-          rows={journeys.map((journey) => [
-            journey.name,
-            <StatusPill key="status" tone="success">{journey.status}</StatusPill>,
-            compact(journey.enrollments),
-            compact(journey.completions)
-          ])}
-        />
+        <PanelHeader icon={UserCheck} title="Client Oversight" caption="Client health, campaign ownership, and revenue exposure." />
+        <div className="readiness-list">
+          <ReadinessItem label={`${contacts.length} client contacts in CRM`} status="ready" />
+          <ReadinessItem label={`${campaigns.length} active campaign workstreams`} status="ready" />
+          <ReadinessItem label="Spend visibility guarded until live mode" status="pending" />
+        </div>
       </section>
-
       <section className="panel">
-        <PanelHeader icon={FlaskConical} title="A/B Testing" caption="Variant assignment, conversion tracking, winner selection." />
-        <DataTable
-          columns={["Test", "Status", "A", "B", "Winner", "Conversions"]}
-          rows={abTests.map((test) => [
-            test.name,
-            <StatusPill key="status" tone={test.status === "complete" ? "success" : "forecast"}>{test.status}</StatusPill>,
-            test.variantA,
-            test.variantB,
-            test.winner ?? "collecting data",
-            compact(test.conversions)
-          ])}
-        />
+        <PanelHeader icon={Handshake} title="Client Commitments" caption="High-touch workstreams that need operator review." />
+        <div className="briefing-list">
+          {contacts.slice(0, 3).map((contact) => (
+            <article key={contact.id}>
+              <StatusPill tone="forecast">{contact.stage}</StatusPill>
+              <h3>{contact.name}</h3>
+              <p>{currency(contact.lifetimeValueCents)} lifetime value tracked in CRM.</p>
+            </article>
+          ))}
+        </div>
       </section>
     </div>
+  );
+}
+
+function ClientsPage({ contacts }: { contacts: CrmContactRecord[] }) {
+  return (
+    <section className="panel page-panel">
+      <PanelHeader icon={BriefcaseBusiness} title="Clients" caption="Client roster, lifecycle stage, and value pipeline." />
+      <div className="pipeline">
+        {contacts.map((contact) => (
+          <article key={contact.id}>
+            <h3>{contact.name}</h3>
+            <p>{contact.email}</p>
+            <StatusPill tone="forecast">{contact.stage}</StatusPill>
+            <strong>{currency(contact.lifetimeValueCents)}</strong>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function JourneysPage({ journeys, contained = false }: { journeys: CustomerJourneyRecord[]; contained?: boolean }) {
+  const className = contained ? "panel" : "panel page-panel";
+
+  return (
+    <section className={className}>
+      <PanelHeader icon={RouteIcon} title="Journeys" caption="Enroll, advance, and complete real CRM contacts." />
+      <DataTable
+        columns={["Journey", "Status", "Enrollments", "Completions"]}
+        rows={journeys.map((journey) => [
+          journey.name,
+          <StatusPill key="status" tone="success">{journey.status}</StatusPill>,
+          compact(journey.enrollments),
+          compact(journey.completions)
+        ])}
+      />
+    </section>
+  );
+}
+
+function AbTestingPage({ abTests, contained = false }: { abTests: AbTestRecord[]; contained?: boolean }) {
+  const className = contained ? "panel" : "panel page-panel";
+
+  return (
+    <section className={className}>
+      <PanelHeader icon={FlaskConical} title="A/B Testing" caption="Variant assignment, conversion tracking, winner selection." />
+      <DataTable
+        columns={["Test", "Status", "A", "B", "Winner", "Conversions"]}
+        rows={abTests.map((test) => [
+          test.name,
+          <StatusPill key="status" tone={test.status === "complete" ? "success" : "forecast"}>{test.status}</StatusPill>,
+          test.variantA,
+          test.variantB,
+          test.winner ?? "collecting data",
+          compact(test.conversions)
+        ])}
+      />
+    </section>
   );
 }
 
@@ -615,6 +911,47 @@ function AdminConsole({ mode }: { mode: SystemMode }) {
       <p className="console-note">
         Current mode: <strong>{mode.isLive ? "Live Production" : "Pre-Launch Forecast"}</strong> for {mode.deploymentTarget}.
       </p>
+    </section>
+  );
+}
+
+function ModulePage({
+  details,
+  metrics = []
+}: {
+  details: (typeof moduleDetails)[keyof typeof moduleDetails];
+  metrics?: string[];
+}) {
+  const Icon = details.icon;
+
+  return (
+    <section className="panel page-panel module-page">
+      <PanelHeader icon={Icon} title={details.title} caption={details.caption} />
+      <div className="module-hero">
+        <div>
+          <StatusPill tone="forecast">{details.status}</StatusPill>
+          <h3>{details.title} command surface</h3>
+          <p>{details.caption}</p>
+        </div>
+        <div className="module-metrics">
+          {[...metrics, ...details.bullets].slice(0, 4).map((metric) => (
+            <span key={metric}>{metric}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SystemOnline({ mode, pulse }: { mode: SystemMode; pulse: string }) {
+  return (
+    <section className="panel page-panel module-page">
+      <PanelHeader icon={Power} title="System Online" caption="Live heartbeat, deployment mode, and command layer availability." />
+      <div className="readiness-list">
+        <ReadinessItem label="Command center API" status="ready" />
+        <ReadinessItem label={`Telemetry ${pulse === "offline" ? "offline" : pulse === "connecting" ? "connecting" : "streaming"}`} status={pulse === "offline" ? "pending" : "ready"} />
+        <ReadinessItem label={`Deployment target ${mode.deploymentTarget}`} status={mode.isLive ? "ready" : "pending"} />
+      </div>
     </section>
   );
 }
