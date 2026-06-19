@@ -18,6 +18,7 @@ import {
   ShieldCheck,
   Siren,
   Sparkles,
+  Terminal,
   ToggleRight,
   Users
 } from "lucide-react";
@@ -77,12 +78,85 @@ const navSections = [
     items: [
       { href: "/security", label: "Security Vault", icon: KeyRound },
       { href: "/activity", label: "Activity Logs", icon: Activity },
+      { href: "/cursor-cli", label: "Cursor CLI", icon: Terminal },
       { href: "/admin", label: "Deployment Console", icon: ToggleRight, hidden: true }
     ]
   }
 ];
 
 const crewColors = ["#00f0ff", "#7c3cff", "#23ffb1", "#ff3df2", "#ffd166"];
+
+const cliModes = [
+  {
+    name: "Agent",
+    description: "Full access to all tools for complex coding tasks",
+    shortcut: "Default"
+  },
+  {
+    name: "Plan",
+    description: "Design your approach before coding with clarifying questions",
+    shortcut: "Shift+Tab, /plan, --plan, --mode=plan"
+  },
+  {
+    name: "Ask",
+    description: "Read-only exploration without making changes",
+    shortcut: "/ask, --mode=ask"
+  }
+];
+
+const cliReference = [
+  {
+    title: "Getting started",
+    description: "Install the CLI on your platform, then start an interactive agent session.",
+    command: `# Install (macOS, Linux, WSL)
+curl https://cursor.com/install -fsS | bash
+
+# Install (Windows PowerShell)
+irm 'https://cursor.com/install?win32=true' | iex
+
+# Run interactive session
+agent`
+  },
+  {
+    title: "Interactive mode",
+    description: "Start a conversation, describe your goal, review proposed changes, and approve commands.",
+    command: `# Start interactive session
+agent
+
+# Start with initial prompt
+agent "refactor the auth module to use JWT tokens"`
+  },
+  {
+    title: "Non-interactive mode",
+    description: "Use print mode for scripts, CI pipelines, reviews, or repeatable automation.",
+    command: `# Run with specific prompt and model
+agent -p "find and fix performance issues" --model "gpt-5"
+
+# Use with git changes included for review
+agent -p "review these changes for security issues" --output-format text`
+  },
+  {
+    title: "Cloud Agent handoff",
+    description: "Prepend & to any message to continue a task in Cloud Agent while you are away.",
+    command: `# Send a task to Cloud Agent mid-conversation
+& refactor the auth module and add comprehensive tests`
+  },
+  {
+    title: "Sessions",
+    description: "Resume previous conversations and keep context across terminal interactions.",
+    command: `# Open previous chats and resume one
+agent ls
+
+# Resume latest conversation
+agent resume
+
+# Continue the previous session
+agent --continue
+
+# Resume specific conversation
+agent --resume="chat-id-here"`
+  }
+];
 
 export function App() {
   const [location] = useLocation();
@@ -147,6 +221,9 @@ export function App() {
             </Route>
             <Route path="/activity">
               <ActivityLogs logs={logs.data ?? []} alerts={alerts.data ?? []} />
+            </Route>
+            <Route path="/cursor-cli">
+              <CursorCliGuide />
             </Route>
             <Route path="/admin">
               <AdminConsole mode={mode.data} />
@@ -558,6 +635,72 @@ function ActivityLogs({ logs, alerts }: { logs: SystemLogRecord[]; alerts: Emerg
   );
 }
 
+function CursorCliGuide() {
+  return (
+    <section className="panel page-panel cli-guide">
+      <div className="cli-hero">
+        <div>
+          <div className="eyebrow">
+            <Terminal size={16} /> Cursor CLI
+          </div>
+          <h2>AI agents directly from your terminal.</h2>
+          <p>
+            Cursor CLI lets you interact with AI agents to write, review, and modify code from an interactive terminal
+            interface or print automation for scripts and CI pipelines.
+          </p>
+        </div>
+        <StatusPill tone="forecast">terminal-ready</StatusPill>
+      </div>
+
+      <div className="cli-reference-grid">
+        {cliReference.map((section) => (
+          <article key={section.title} className="cli-reference-card">
+            <h3>{section.title}</h3>
+            <p>{section.description}</p>
+            <CodeBlock>{section.command}</CodeBlock>
+          </article>
+        ))}
+      </div>
+
+      <section className="cli-section">
+        <PanelHeader icon={Terminal} title="Modes" caption="Switch with slash commands, shortcuts, or the --mode flag." />
+        <div className="mode-grid">
+          {cliModes.map((mode) => (
+            <article key={mode.name} className="mode-card">
+              <StatusPill tone={mode.name === "Agent" ? "success" : "forecast"}>{mode.name}</StatusPill>
+              <p>{mode.description}</p>
+              <code>{mode.shortcut}</code>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="cli-feature-grid">
+        <article>
+          <h3>Sandbox controls</h3>
+          <p>
+            Configure command execution with <code>/sandbox</code> or <code>--sandbox enabled</code> and{" "}
+            <code>--sandbox disabled</code>. Settings persist across sessions.
+          </p>
+        </article>
+        <article>
+          <h3>Max mode</h3>
+          <p>
+            Toggle Max Mode on supported models with <code>/max-mode</code>.
+          </p>
+        </article>
+        <article>
+          <h3>Sudo password prompting</h3>
+          <p>
+            Cursor displays a secure masked password prompt when a command needs sudo. The password flows directly to
+            sudo through secure IPC and is never visible to the AI model.
+          </p>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 function AdminConsole({ mode }: { mode: SystemMode }) {
   const queryClient = useQueryClient();
   const [adminToken, setAdminToken] = useState("");
@@ -677,6 +820,14 @@ function ReadinessItem({ label, status }: { label: string; status: string }) {
       <span>{label}</span>
       <StatusPill tone={status === "ready" ? "success" : status === "pending" ? "warning" : "forecast"}>{status}</StatusPill>
     </div>
+  );
+}
+
+function CodeBlock({ children }: { children: string }) {
+  return (
+    <pre className="code-block">
+      <code>{children}</code>
+    </pre>
   );
 }
 
